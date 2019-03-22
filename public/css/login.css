@@ -1,0 +1,21 @@
+div.container {
+width: 96%;
+max-width: 960px;
+margin: 0 auto;
+}
+
+.img {
+position:absolute;
+width: 50%;
+height: 50%;
+}
+
+.img2{
+position:absolute;
+width: 36%;
+height: 40%;
+left : 18.8%;
+top: 44.2%;
+border: white 3px inset
+}
+
