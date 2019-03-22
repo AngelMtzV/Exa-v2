@@ -42,11 +42,11 @@
                     <center>
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{ route('usuarios.edit',$user->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i> Editar</a>
+                                <a href="{{ route('usuarios.edit',Crypt::encrypt($user->id)) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i> Editar</a>
                             </div>
                             <div class="col-md-6">
                                 
-                                <form id="userEliminar{{$user->id}}" action="{{ Route('usuarios.destroy', $user->id) }}" method="POST">
+                                <form id="userEliminar{{$user->id}}" action="{{ Route('usuarios.destroy',Crypt::encrypt($user->id)) }}" method="POST">
                                   {{ csrf_field() }}
                                     @method('DELETE')
                                 </form>

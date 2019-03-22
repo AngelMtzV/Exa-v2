@@ -41,7 +41,7 @@
                                   @if($examen->id_estado == 1)
                                   <a data-target="#ModalVer-{{$examen->id}}" data-toggle="modal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white botonesTablas" data-toggle="tooltip" data-placement="top" title="Mostrar"><i class="fas fa-eye"></i> Mostrar</a><br><br>
                                   @endif
-                                  <a href="{{ route('examenesAdmin.edit',$examen->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm botonesTablas" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i> Editar</a><br><br>
+                                  <a href="{{ route('examenesAdmin.edit',Crypt::encrypt($examen->id)) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm botonesTablas" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i> Editar</a><br><br>
                                   <form id="myform{{$examen->id}}" action="{{ Route('examenesAdmin.destroy', $examen->id) }}" method="POST">
                                     {{ csrf_field() }}
                                       @method('DELETE')

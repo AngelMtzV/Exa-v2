@@ -11,7 +11,7 @@
             <h2>Editar examen</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('examenesAdmin.update',$examen->id) }}">
+            <form method="POST" action="{{ route('examenesAdmin.update',Crypt::encrypt($examen->id)) }}">
               @csrf
               @method('PUT')
               <div class="form-row">

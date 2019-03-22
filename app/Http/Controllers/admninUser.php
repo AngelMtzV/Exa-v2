@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Tipo_usuario;
 use App\User;
@@ -59,6 +60,8 @@ class admninUser extends Controller
      */
     public function edit($id)
     {
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
         $tiposDusuarios = Tipo_usuario::get();
         $usuario = User::find($id);
         return view('admin.editUser', compact('tiposDusuarios','usuario'));
@@ -73,6 +76,8 @@ class admninUser extends Controller
      */
     public function update(Request $request, $id)
     {
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
         #primero validamos los campos
         $request->validate([
              'name' => ['required', 'string', 'max:255'],
@@ -115,6 +120,8 @@ class admninUser extends Controller
      */
     public function destroy($id)
     {
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
         #primero buscamos el usuario que se desea eliminar a travez de su id
         $usuario = User::find($id);
         #usamos el metodo delete para destruirlo

@@ -28,7 +28,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <a href="{{ route('preguntasAdmin',$examen->id) }}"><button type="button" class="btn btn-primary">Preguntas</button></a>
+        <a href="{{ route('preguntasAdmin',Crypt::encrypt($examen->id)) }}"><button type="button" class="btn btn-primary">Preguntas</button></a>
       </div>
     </div>
   </div>

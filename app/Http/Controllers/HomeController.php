@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
@@ -72,6 +73,10 @@ class HomeController extends Controller
     }
 
     public function examen($id){
+
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
+
         $examen = Examen::find($id);
         $preguntas = Pregunta::where('id_examen',$id)->get();
         $cont = 0;

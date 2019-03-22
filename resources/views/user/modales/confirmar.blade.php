@@ -25,7 +25,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <a href="/examen/{{$examen[0]->id}}"><button type="button" class="btn btn-primary">Confirmar</button></a>
+        <a href="{{ route('examen',Crypt::encrypt($examen[0]->id)) }}"><button type="button" class="btn btn-primary">Confirmar</button></a>
       </div>
     </div>
   </div>

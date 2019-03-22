@@ -11,7 +11,7 @@
             <h2>Editar datos de {{ $usuario->usuario }}</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('usuarios.update',$usuario->id) }}">
+            <form method="POST" action="{{ route('usuarios.update',Crypt::encrypt($usuario->id)) }}">
               @csrf
               @method('PUT')
               <div class="form-row">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Pregunta;
 use App\Examen;
@@ -30,6 +31,8 @@ class adminPreguntasExamen extends Controller
     public function create(){}
     public function crear($id)
     {
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
         #Buscamos el examen por el id
         $examen = Examen::find($id);
         #Buscamos las preguntas a travez de id del examen
@@ -108,6 +111,8 @@ class adminPreguntasExamen extends Controller
      */
     public function edit($id)
     {
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
         $pregunta = Pregunta::find($id);
         $idExamen = $pregunta->id_examen;
         return view('admin.examenes.editPregunta', compact('pregunta', 'idExamen'));
@@ -120,7 +125,9 @@ class adminPreguntasExamen extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {        
+    {   
+        #Desencripta la el parametro que se envia de la vista encriptado para que no se vea el id que se manda
+        $id = Crypt::decrypt($id);
         $request->validate([
             'inpPregunta' => 'required',
             'inpOpcion1' => 'required',
@@ -155,17 +162,12 @@ class adminPreguntasExamen extends Controller
 
            #sacamos el id del examen al que pertenece esa pregunta
            $idExamen = $pregunta->id_examen;
-           #Buscamos el examen por el id
-           $examen = Examen::find($idExamen);
-           #Buscamos las preguntas a travez de id del examen
-           $preguntas = Pregunta::where('id_examen', $idExamen)->get();        
-           #consultamos el total de las preguntas del examen 
-           $allPreguntas = $examen->no_preguntas;
-           #contamos cuantas preguntas hemos agregado
-           $totalPreguntas = count($preguntas);
-           $cont = 0;
+           #encriptamos el id del examen para pasarlo al metodo crear y volver a ejecutar ese metodo
+           $id = Crypt::encrypt($idExamen);
            Alert::success('Pregunta actualizada correctamente', '¡Éxito!')->autoclose(3000);
-           return view('admin.examenes.addPreguntas', compact('preguntas','idExamen','allPreguntas','totalPreguntas','cont'));
+           #le pasamos al metodo action el controlador y methodo que tiene que ejecutar junto con el parametro que pide el methodo crear
+           return redirect()->action('adminPreguntasExamen@crear', [$id]);
+           //return view('admin.examenes.addPreguntas', compact('preguntas','idExamen','allPreguntas','totalPreguntas','cont'));
         }else{
             #si el input de la imagen viene vacia, no modificamos ese atributo
             #Buscamos la pregunta a travez de su id y le asignamos a la variable pregunta
@@ -185,17 +187,12 @@ class adminPreguntasExamen extends Controller
 
             #sacamos el id del examen al que pertenece esa pregunta
             $idExamen = $pregunta->id_examen;
-            #Buscamos el examen por el id
-            $examen = Examen::find($idExamen);
-            #Buscamos las preguntas a travez de id del examen
-            $preguntas = Pregunta::where('id_examen', $idExamen)->get();        
-            #consultamos el total de las preguntas del examen 
-            $allPreguntas = $examen->no_preguntas;
-            #contamos cuantas preguntas hemos agregado
-            $totalPreguntas = count($preguntas);
-            $cont = 0;
+            #encriptamos el id del examen para pasarlo al metodo crear y volver a ejecutar ese metodo
+            $id = Crypt::encrypt($idExamen);
             Alert::success('Pregunta actualizada correctamente', '¡Éxito!')->autoclose(3000);
-            return view('admin.examenes.addPreguntas', compact('preguntas','idExamen','allPreguntas','totalPreguntas','cont'));
+            #le pasamos al metodo action el controlador y methodo que tiene que ejecutar junto con el parametro que pide el methodo crear
+            return redirect()->action('adminPreguntasExamen@crear', [$id]);
+            //return view('admin.examenes.addPreguntas', compact('preguntas','idExamen','allPreguntas','totalPreguntas','cont'));
         }        
     }
 

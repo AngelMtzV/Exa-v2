@@ -34,7 +34,7 @@
                                 <td><i class="fas fa-user-alt"></i> {{ $user->name }} {{ $user->apellidos }}</td>
                                 <td><i class="fas fa-envelope-square"></i> {{ $user->email }}</td>
                                 <td style="align-content: center;">               
-                                  <a href="{{ route('examenesAdmin.show',$user->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="top" title="Resultados"><i class="fas fa-clipboard-list"></i> Resultados</a>                                  
+                                  <a href="{{ route('examenesAdmin.show',Crypt::encrypt($user->id)) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="top" title="Resultados"><i class="fas fa-clipboard-list"></i> Resultados</a>                                  
                                   <a class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm text-white" data-toggle="modal" data-target="#myModal-{{$user->id}}"><i class="fas fa-eye"></i> Información</a>
                                 </td>@endif
                                 @include('admin.modales.infoUser')

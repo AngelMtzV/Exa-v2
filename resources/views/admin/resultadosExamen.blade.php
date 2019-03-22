@@ -42,7 +42,7 @@
                                 <td class="aciertos">{{ $con->aciertos }}</td>
                                 <td class="errores">{{ $con->errores }}</td>
                                 <td> 
-                                  <a href="{{ route('mostrarExamen',[$con->id_examen, $con->id_usuario]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Examen</a>
+                                  <a href="{{ route('mostrarExamen',[Crypt::encrypt($con->id_examen),Crypt::encrypt($con->id_usuario)]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Examen</a>
                                 </td>
                                 @empty
                                 <h4 class="alert alert-danger"><i class="fas fa-info-circle"></i> El usuario no ha realizado ningún examen</h4>

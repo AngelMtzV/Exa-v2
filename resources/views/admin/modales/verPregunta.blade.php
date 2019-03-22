@@ -77,10 +77,10 @@
           <center>
               <div class="row">
                   <div class="col-md-6">
-                      <a href="{{ route('preguntasAdmin.edit',$pregunta->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i> Editar</a>
+                      <a href="{{ route('preguntasAdmin.edit',Crypt::encrypt($pregunta->id)) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i> Editar</a>
                   </div>
                   <div class="col-md-6">
-                      <form id="preguntaEliminar{{$pregunta->id}}" action="{{ Route('preguntasAdmin.destroy', $pregunta->id) }}" method="POST">
+                      <form id="preguntaEliminar{{$pregunta->id}}" action="{{ Route('preguntasAdmin.destroy',$pregunta->id) }}" method="POST">
                         {{ csrf_field() }}
                           @method('DELETE')
                       </form>

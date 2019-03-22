@@ -11,7 +11,7 @@
             <h2>Editar pregunta</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('preguntasAdmin.update',$pregunta->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('preguntasAdmin.update',Crypt::encrypt($pregunta->id)) }}" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="form-row">

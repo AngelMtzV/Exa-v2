@@ -49,6 +49,10 @@ body {
   background-color: #b7c7f2;
   color: #000;
 }
+#contenedor{
+  margin-left: 3%;
+  margin-right: 3%;
+}
 /*Fin del estilo para la barra de navegacion*/
 /*Fin del estilo para la barra de navegacion*/
 
