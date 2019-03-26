@@ -6,7 +6,7 @@
     <h1><img src="{{ asset('imagenes/admin3.png') }}" width="70" height="60"> Administrador - Usuarios</h1>
 
     <a class="d-none d-sm-inline-block  btn-primary shadow-sm"></a>
-    <a href="{{ route('register')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-user-plus"></i> Nuevo usuario</a>
+    <a href="{{ route('register')}}" class="d-none d-sm-inline-block btn btn-circle btn-lg btn-primary shadow-sm"><i class="fas fa-user-plus"></i></a>
   </div>
 
   <div class="row col-xl-12 col-lg-12">
@@ -32,13 +32,22 @@
                           @if($user->id_tipoUsuario != 1)
                             <tr>
                                 <td><i class="fas fa-user-alt"></i> {{ $user->name }} {{ $user->apellidos }}</td>
-                                <td><i class="fas fa-envelope-square"></i> {{ $user->email }}</td>
+                                <td>
+                                  <div class="form-row">
+                                    <div class="col-md-2">
+                                        <a href="{{ route('enviarEmail',$user->id) }}" class="d-none d-sm-inline-block btn btn-circle btn-warning shadow-sm" data-toggle="tooltip" data-placement="top" title="Enviar e-mail"><i class="fas fa-envelope-square"></i></a> 
+                                    </div>
+                                    <div class="col-md-10">
+                                        {{ $user->email }}
+                                    </div>
+                                  </div>
+                                
+                                </td>
                                 <td style="align-content: center;">               
                                   <a href="{{ route('examenesAdmin.show',Crypt::encrypt($user->id)) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="top" title="Resultados"><i class="fas fa-clipboard-list"></i> Resultados</a>                                  
                                   <a class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm text-white" data-toggle="modal" data-target="#myModal-{{$user->id}}"><i class="fas fa-eye"></i> Información</a>
                                 </td>@endif
                                 @include('admin.modales.infoUser')
-
                                 @empty
                                 <h4 class="alert alert-info"><i class="fas fa-info-circle"></i> Aún no existen registros</h4>
                             </tr>

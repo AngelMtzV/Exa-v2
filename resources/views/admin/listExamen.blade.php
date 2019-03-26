@@ -11,7 +11,7 @@
     <h1><img src="{{ asset('imagenes/admin3.png') }}" width="70" height="60"> Administrador - Examenes</h1>
 
     <a class="d-none d-sm-inline-block  btn-primary shadow-sm"></a>
-    <a href="{{ route('examenesAdmin.create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-user-plus"></i> Nuevo examen</a>
+    <a href="{{ route('examenesAdmin.create')}}" class="d-none d-sm-inline-block btn btn-circle btn-lg btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
   </div>
 
   <div class="row col-xl-12 col-lg-12">

@@ -2,8 +2,8 @@
 <div class="modal fade" id="modalC-{{ $examen[0]->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header btn-primary">
-        <h5 class="modal-title" id="exampleModalLabel">Examen {{ $examen[0]->nombre }} contestado.</h5>
+      <div class="modal-header cabecera">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Examen {{ $examen[0]->nombre }} contestado.</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
           <span aria-hidden="true" style="color: #fff;">&times;</span>
         </button>

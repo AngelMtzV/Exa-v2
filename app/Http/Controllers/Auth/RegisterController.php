@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Session;
+use Illuminate\Support\Facades\Crypt;
+use Alert;
 
 class RegisterController extends Controller
 {
@@ -111,7 +113,8 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        Session::flash('message','Usuario agregado correctamente');
+        //Session::flash('message','Usuario agregado correctamente');
+        Alert::success('El usuario se agrego correctamente', '¡Éxito!')->autoclose(3000);
         return redirect()->route('home');
     }
 }

@@ -33,3 +33,5 @@ Route::get('preguntasAdmin/{id}', 'adminPreguntasExamen@crear')->name('preguntas
 Route::put('editPreguntaImg/{id}', 'adminPreguntasExamen@editImg')->name('editPreguntaImg');
 Route::resource('preguntasAdmin', 'adminPreguntasExamen');
 
+// Email related routes
+Route::get('enviar/{id}', 'MailController@send')->name('enviarEmail');

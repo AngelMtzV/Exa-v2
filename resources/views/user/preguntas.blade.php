@@ -1,5 +1,4 @@
 <!--Formulario para imprimir las preguntas dinamicamente-->
-
 <form name="guardar_preguntas" method="POST" action="{{ route('preguntas.store') }}" id="formid">
 	<input type="text" id="idExamen" name="idExamen" value="{{ $examen->id }}" hidden>
 	{{ csrf_field() }}
@@ -9,7 +8,7 @@
 	@endphp
 	<div class="container">
 		<div class="card">
-		  <div class="card-header primary" style="background-color: #4e73df">
+		  <div class="card-header cabecera" style="background-color: #4e73df">
 		    <strong><pre style="color: #fff">{{ $cont }}.-{{ $pregunta->pregunta }}</pre></strong>
 		  </div>
 		  @if($pregunta->imagen != "")

@@ -60,10 +60,10 @@
                     <a class="dropdown-item" href="{{ route('examenesAdmin.create') }}">Agregar</a>
                   </div>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                   <a class="nav-link" href="#">Resultados generales</a>
                 </li>
-                <!--<li class="nav-item @yield('botonNavExamenes')">
+                <li class="nav-item @yield('botonNavExamenes')">
                   <a class="nav-link" href="{{ route('examenesAdmin.create') }}">Examenes</a>
                 </li>
                 <li class="nav-item @yield('botonNavUsuarios')"> 
